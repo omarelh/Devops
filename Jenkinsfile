@@ -3,12 +3,11 @@ pipeline {
     
     stages {
 
-        stage('install Requirements') {
+        stage('install Requirementse') {
             steps
             {
                 sh"pip3 install requirements.txt"
             }
-            
             }
         stage('build project'){
             steps
