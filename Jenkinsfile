@@ -6,13 +6,13 @@ pipeline {
         stage('install Requirementse') {
             steps
             {
-                sh"pip3 install requirements.txt"
+                sh"pip install requirements.txt"
             }
             }
         stage('build project'){
             steps
             {
-                sh"python app.py"
+                sh"python3 app.py"
             }
         }
         }
