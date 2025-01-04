@@ -1,20 +1,27 @@
 pipeline {
-    agent any
-    
+    agent {
+        docker { image 'python:3.10' }
+    }
     stages {
-
-        stage('install Requirementse') {
-            steps
-            {
-                sh"pip install requirements.txt"
-            }
-            }
-        stage('build project'){
-            steps
-            {
-                sh"python3 app.py"
+        stage('Install Dependencies') {
+            steps {
+                // Install dependencies from requirements.txt
+                sh 'pip install -r requirements.txt'
             }
         }
+        stage('Run Tests') {
+            steps {
+                // Run unit tests
+                sh 'pytest tests/'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                // Build a Docker image for the Python app
+                sh 'docker build -t your-python-app .'
+            }
         }
     }
+}
+
 
