@@ -3,24 +3,21 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                // Install dependencies from requirements.txt
-                sh 'pip3 install --upgrade pip'
-                sh 'pip3 install -r requirements.txt'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Run Tests') {
             steps {
-                // Run unit tests
                 sh 'pytest tests/'
             }
         }
         stage('Build Docker Image') {
             steps {
-                // Build a Docker image for the Python app
-                sh 'docker build -t your-python-app .'
+                sh 'docker build -t python-app .'
             }
         }
     }
 }
+
 
 
